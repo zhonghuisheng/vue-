@@ -1,12 +1,14 @@
 <template>
   <div class="home-container">
     <!-- 首页的轮播图 -->
-    <mt-swipe :auto="3000">
+    <!-- 父给子传递数据 属性绑定 -->
+    <swipe :lunbo="lunbo"></swipe>
+     <!-- <mt-swipe :auto="3000">
       <mt-swipe-item v-for="item in lunbo" :key="item.url">
         <img :src="item.img" alt="" class="img">
       </mt-swipe-item>
-    </mt-swipe>
-    <!-- 九宫格 -->
+    </mt-swipe> -->
+     <!-- 九宫格  -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <router-link  to='/home/newlist'>
@@ -14,14 +16,18 @@
           <div class="mui-media-body">新闻资讯</div>
         </router-link>
       </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-         <img src="../../images/menu2.png" alt="">
-          <div class="mui-media-body">图片分享</div>
-        </a></li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+          <router-link to='home/photolist' >
+            <img src="../../images/menu2.png" alt="">
+              <div class="mui-media-body">图片分享</div>
+          </router-link>
+        </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <router-link to='/home/goodslist'>
            <img src="../../images/menu3.png" alt="">
           <div class="mui-media-body">商品购买</div>
-        </a></li>
+        </router-link>
+        </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
           <img src="../../images/menu4.png" alt="">
           <div class="mui-media-body">留言反馈</div>
@@ -40,6 +46,8 @@
 </template>
 
 <script>
+//引入公共轮播图组件
+import swipe from '../common/swipe.vue'
   export default {
     data() {
       return {
@@ -58,18 +66,16 @@
           }
         })
       }
+    },
+    components:{
+      swipe
     }
   }
 </script>
 
 <style lang='scss' scoped>
   .home-container {
-    height: 200px;
-    background-color: #ccc;
-
-    img {
-      width: 100%;
-    }
+    
     .mui-grid-9{
     background-color: #fff;
     .mui-table-view-cell{

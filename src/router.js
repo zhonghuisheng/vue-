@@ -14,8 +14,13 @@ import home from "./components/tabbar/home.vue";
 import search from "./components/tabbar/search.vue";
 import newlist from "./components/news/newlist.vue";
  import newdetial from "./components/news/newdetial.vue";
+ import photolist from "./components/photo/photolist.vue";
+ import photodetail from "./components/photo/photodetail.vue";
+ import goodslist from "./components/goods/goodslist.vue";
+ import goodsdetail from "./components/goods/goodsdetail.vue";
+ import goodsdesc from "./components/goods/goodsdesc.vue";
 
-
+ 
 // 实例化路由-----------------------------------------------------------
 var router=new VueRouter({
   routes:[
@@ -26,6 +31,11 @@ var router=new VueRouter({
     {path:'/search',component:search},
     {path:'/home/newlist',component:newlist},
     {path:'/home/newdetial/:id',component:newdetial},
+    {path:'/home/photolist',component:photolist},
+    {path:'/home/photodetail/:id',component:photodetail},
+    {path:'/home/goodslist',component:goodslist},
+    {path:'/home/goodsdetail/:id',component:goodsdetail},
+    {path:'/home/goodsdesc/:id',component:goodsdesc},
   ],
   //修改选中选项卡的显示高亮
   'linkActiveClass':'mui-active'
