@@ -83,7 +83,7 @@ import box from '../common/carnumberbox.vue'
           if(id==''){
             return;
           }
-          this.$http.get('api/getshopcarlist/'+id).then(function(res){
+          this.$http.get('api/getshopcarlist/'+id).then(function(res){hjnink
             // console.log(res)
             if(res.body.status==0){
               this.goodlist=res.body.message;
