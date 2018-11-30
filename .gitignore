@@ -1,3 +1,4 @@
 node_modules/
 mui-3.7.1/
-.vscode
+.vscode/
+运行项目时需要用黑窗口先运行src里面的js/

@@ -1,7 +1,12 @@
 <template>
   <div class="app-container">
     <!-- 头部 -->
-    <mt-header fixed title="固定在顶部"></mt-header>
+    <mt-header fixed title="固定在顶部">
+       <span  slot="left" @click="getback"  v-show="flag">
+        <mt-button icon="back">返回</mt-button>
+      </span>
+    </mt-header>
+
 
     <!-- 中间部分 -->
     
@@ -19,7 +24,7 @@
         <span class="mui-tab-label">会员</span>
       </router-link>
       <router-link class="mui-tab-item" to="/shopcar">
-        <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">9</span></span>
+        <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">{{$store.getters.getTotalNumber}}</span></span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
       <router-link class="mui-tab-item" to="/search">
@@ -32,7 +37,26 @@
 
 <script>
   export default {
-
+    data(){
+      return{
+        flag:true   //控制返回按钮是显示还是隐藏
+      }
+    },
+      methods:{
+        getback(){
+          history.go(-1)
+        }
+      },
+      //使用watch来监听路由对象
+      watch:{
+        '$route':function(newvalue,oldvalue){
+          if(newvalue.path=='/home'){
+            this.flag=false
+          }else{
+            this.flag=true
+          }
+        }
+      }
   }
 </script>
 

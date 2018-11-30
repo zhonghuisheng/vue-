@@ -19,6 +19,7 @@ import newlist from "./components/news/newlist.vue";
  import goodslist from "./components/goods/goodslist.vue";
  import goodsdetail from "./components/goods/goodsdetail.vue";
  import goodsdesc from "./components/goods/goodsdesc.vue";
+ import goodscommon from "./components/goods/goodscommon.vue";
 
  
 // 实例化路由-----------------------------------------------------------
@@ -36,6 +37,7 @@ var router=new VueRouter({
     {path:'/home/goodslist',component:goodslist},
     {path:'/home/goodsdetail/:id',component:goodsdetail},
     {path:'/home/goodsdesc/:id',component:goodsdesc},
+    {path:'/home/goodscommon/:id',component:goodscommon},
   ],
   //修改选中选项卡的显示高亮
   'linkActiveClass':'mui-active'

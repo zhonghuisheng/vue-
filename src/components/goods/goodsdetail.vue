@@ -25,13 +25,13 @@
             <div class="number"> 购买数量:
               <div class="mui-numbox" data-numbox-min='1' data-numbox-max='200'>
                 <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-                <input id="test" class="mui-input-numbox" type="number" value="5" />
+                <input id="test" class="mui-input-numbox" type="number" ref='number'  />
                 <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
               </div>
             </div>
             <div class="btn">
                 <mt-button type="primary">立即购买</mt-button>
-                <mt-button type="danger">加入购物车</mt-button>
+                <mt-button type="danger" @click="addcar">加入购物车</mt-button>
             </div>
 					</div>
 				</div>
@@ -50,8 +50,8 @@
                 <div>上架时间: {{GoodsInfo.add_time | dateFormat}}</div>
             </div>
             <div class="button"> 
-                 <mt-button type="primary" size="large" plain  @click="goodsdesc">图文介绍</mt-button>
-                 <mt-button type="danger" size="large" plain class="common">商品评论</mt-button>
+                 <mt-button type="primary" size="large" plain @click="goodsdesc">图文介绍</mt-button>
+                 <mt-button type="danger" size="large" plain class="common" @click="goodscommon">商品评论</mt-button>
             </div>
 
 					</div>
@@ -90,6 +90,22 @@
       this.getGoodsInfo() //商品详情信息自动请求
     },
     methods:{
+      //把商品加入购物车方法 ------------------
+      addcar(){
+        //准备购物车商品对象
+        var data={
+          id:this.id,
+          number:this.$refs.number.value, //通过给元素设置ref属性 获取商品的总数量 
+          price:this.GoodsInfo.sell_price,
+          selected:true,
+        }
+        //把数据共享到vuex中去
+        this.$store.commit('add',data)
+      },
+      //跳转到商品评论----------------------
+      goodscommon(){
+        this.$router.push('/home/goodscommon/'+this.id);
+},
       //跳转到商品图文的页面----------------------
       goodsdesc(){
          this.$router.push('/home/goodsdesc/'+this.id);
